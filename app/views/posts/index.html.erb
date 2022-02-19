@@ -1,0 +1,10 @@
+<h1>Posts#index</h1>
+
+<div class="postlist">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <h1><%= post.id %>. <%= post.description %></h1>
+      <p>By <%= post.user.email %></p>
+    </div>
+  <% end %>
+</div>
