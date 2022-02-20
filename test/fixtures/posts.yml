@@ -1,0 +1,7 @@
+first_post:
+  description: "My first Post"
+  user: 1
+  
+second_post:
+  description: "My second Post"
+  user: 1
