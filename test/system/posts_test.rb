@@ -1,19 +1,13 @@
 require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
-  test "visiting the post index" do
+  test "user should not be able to visit the post index if they are not logged in" do
     visit posts_url
-    assert_selector "h1", text: "Post"
+    save_and_open_screenshot
+    assert_text "Log in"
   end
 
-  test "Ensure all post are being displayed" do
-    visit posts_url
-
-    assert_selector ".postlist"
-    assert_selector ".post", count: Post.count
-  end
-
-  test "lets a signed in user see all post" do
+  test "user should be able to visit the post index if they are logged in" do
     visit "/"
     # save_and_open_screenshot
     login_as users(:test_user)
@@ -23,19 +17,22 @@ class PostsTest < ApplicationSystemTestCase
     assert_selector ".post", count: Post.count
   end
 
-  test "Should not save if post is more than 140 character" do
-    post = Post.new(description: "a" * 141)
-    assert_not post.save
-  end
+  test "lets a signed in user create a new post" do
+    # visit "/"
+    # login_as users(:test_user)
+    # visit "/posts"
+    # assert_selector "h1", text: "Post"
+    # assert_selector ".post", count: Post.count
+    # visit "/posts/new"
+    # save_and_open_screenshot
 
-  test "Should not save if post is less than or equal to 140 character but does not have a user" do
-    post = Post.new(description: "a" * 140)
-    assert_not post.save
-  end
+    # fill_in "description" with "A brand new post"
 
-  test "Should save if post is less than or equal to 140 character and have a user" do
-    post = Post.new(description: "a" * 140)
-    post.user = users(:test_user)
-    assert post.save
+    # click on "Create Post"
+    # save_and_open_screenshot
+    # this should redirect user back to page with all the post
+    # assert_equal posts_path, page.current_path
+    # assert_text "A brand new post"
+
   end
 end

@@ -1,3 +1,5 @@
+# need to learn how to add user reference to post.
+
 first_post:
   description: "My first Post"
   user: test_user
