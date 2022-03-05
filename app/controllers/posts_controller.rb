@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :index ]
   def index
-    @posts = Post.all
+    @posts = current_user.posts
   end
 
   def new
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @flat.save
-      redirect_to flat_path(@flat)
+      redirect_to post_path(@post)
     else
       render :new
     end

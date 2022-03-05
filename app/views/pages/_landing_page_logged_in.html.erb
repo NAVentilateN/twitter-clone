@@ -1,0 +1,15 @@
+<% provide(:title, current_user.username) %>
+<div class="container">
+  <%= gravatar_for (current_user) %>
+  <div class="posts">
+    <div class="new-post">
+    </div>
+
+    <div class="postlist">
+      <div class="post">
+      </div>
+    </div>
+  </div>
+  <div class="followers">
+  </div>
+</div>

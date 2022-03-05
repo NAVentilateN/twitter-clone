@@ -3,7 +3,7 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   test "user should not be able to visit the post index if they are not logged in" do
     visit posts_url
-    save_and_open_screenshot
+    # save_and_open_screenshot
     assert_text "Log in"
   end
 
