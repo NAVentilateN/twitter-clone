@@ -1,1 +1,7 @@
-<%= link_to "post page", posts_path %>
+
+
+<% if user_signed_in?  %>
+  <%= render  partial: 'landing_page_logged_in' %>
+<% else %>
+  <%= render  partial: 'landing_page_logged_out' %>
+<% end %>
