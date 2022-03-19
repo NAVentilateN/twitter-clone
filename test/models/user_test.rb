@@ -43,4 +43,12 @@ class UserTest < ActiveSupport::TestCase
     # reload will check that the attribute is also persisted
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
+
+  test "associate post should be destroyed" do
+    @user.save
+    @user.posts.create!(description: "Test post")
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
 end

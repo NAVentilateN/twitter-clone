@@ -1,17 +1,11 @@
 class PostsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :index ]
-  def index
-    @posts = current_user.posts
-  end
-
-  def new
-    @post = Post.new
-  end
 
   def create
     @post = Post.new(post_params)
-    if @flat.save
-      redirect_to post_path(@post)
+    @post.user = current_user
+    if @post.save
+      redirect_to posts_path
     else
       render :new
     end
@@ -27,7 +21,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def delete
+  def destroy
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path

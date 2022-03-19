@@ -1,6 +1,7 @@
 require "test_helper"
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers # Rails >= 5
   # test "the truth" do
   #   assert true
   # end

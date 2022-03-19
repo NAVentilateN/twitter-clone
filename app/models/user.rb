@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 200 }
   validates :username, presence: true, length: { maximum: 50 }
 
-  has_many :posts
-  has_one :friendlist
+  has_many :posts, dependent: :destroy
+  has_one :friendlist, dependent: :destroy
   has_many :friends, through: :friendlist
 end
