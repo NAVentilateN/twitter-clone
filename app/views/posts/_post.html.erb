@@ -1,0 +1,10 @@
+<div class="post" id="<%= post.id %>">
+  <%= gravatar_for @user %>
+  <span class="content"><%= post.description %></span>
+  <span class="user">By <%= post.user.username %></span>
+  <span class="timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.</span>
+  <%= link_to 'Delete',
+      post_path(post),
+      method: :delete,
+      data: {confirm: "Are you sure?"} %>
+</div>

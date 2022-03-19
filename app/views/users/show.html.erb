@@ -5,6 +5,14 @@
         <%= gravatar_for @user %>
         <%= @user.username %>
       </h1>
+
+      <div class="posts">
+        <div class="new-post">
+          <%= render "posts/newpost" %>
+        </div>
+
+        <%= render "posts/postlist" %>
+      </div>
     </section>
   </aside>
 </div>

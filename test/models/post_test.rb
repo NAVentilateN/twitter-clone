@@ -1,6 +1,10 @@
 require "test_helper"
 
 class PostTest < ActiveSupport::TestCase
+  def setup
+    @post = Post.new(description: "a" * 140, user: users(:test_user))
+  end
+
   test "Should not save if post is more than 140 character" do
     post = Post.new(description: "a" * 141)
     assert_not post.save
