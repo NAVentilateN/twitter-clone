@@ -577,7 +577,7 @@ DEPENDENCIES
   mini_magick
   minitest
   minitest-reporters
-  pg (~> 1.1)
+  pg
   pry-byebug
   pry-rails
   puma (~> 5.0)
