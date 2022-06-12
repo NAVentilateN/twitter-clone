@@ -1,7 +1,23 @@
-.postlist {
-  color: grey;
-}
+.posts {
+  .new-post {
+    border: solid grey 5px;
+    margin: 5px;
+    padding: 5px;
+    color: grey;
+  }
 
-.post {
-  color: grey;
+  .postlist {
+    border: solid black 5px;
+    padding: 5px;
+    color: grey;
+
+    .post {
+      border: solid grey 5px;
+      margin: 5px;
+      padding: 5px;
+      color: grey;
+    }
+
+  }
+
 }

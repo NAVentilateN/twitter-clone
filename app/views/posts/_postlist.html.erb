@@ -1,5 +1,10 @@
 <div class="postlist">
-  <% @posts.each_with_index do |post, index| %>
-    <%= render "posts/post", post: post, index: index %>
+  <h3>
+    Posts <%= (@posts.count) %>
+  </h3>
+  <% if @posts.any? %>
+    <% @posts.each_with_index do |post, index| %>
+      <%= render "posts/post", post: post, index: index %>
+    <% end %>
   <% end %>
 </div>

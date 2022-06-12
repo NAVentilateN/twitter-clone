@@ -1,10 +1,11 @@
 <% provide(:title, current_user.username) %>
 <div class="container">
-  <%= gravatar_for (current_user) %>
+  <%# <%= gravatar_for (current_user) %>
   <div class="posts">
     <div class="new-post">
+      <%= render "posts/newpost" %>
     </div>
-  </div>
-  <div class="followers">
+    <%= render "posts/postlist" %>
+    <%= will_paginate @posts %>
   </div>
 </div>

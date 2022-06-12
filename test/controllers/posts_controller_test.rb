@@ -1,7 +1,56 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  # test "should get index" do
+  include Devise::Test::IntegrationHelpers
+  def setup
+    @post = posts(:first_post)
+    @other_post = posts(:orange)
+    @user = users(:test_user)
+    @other_user = users(:test_other_user)
+  end
+
+  test "should redirect create when not logged in" do
+    assert_no_difference 'Post.count' do
+      post posts_path, params: { post: { content: "Lorem ipsum" } }
+    end
+    # updated to devise path
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'Post.count' do
+      delete post_path(@post)
+    end
+    # updated to devise path
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should allow user sign in and to create a post" do
+    sign_in @user
+    assert_difference 'Post.count', 1 do
+      post posts_path, params: { post: { description: "Lorem ipsum" } }
+    end
+    assert_redirected_to root_path
+  end
+
+  test "should allow user to delete own post" do
+    sign_in @user
+    assert_difference 'Post.count', -1 do
+      delete post_path(@post)
+    end
+    assert_redirected_to root_path
+  end
+
+  test "should not allow user to delete other user post" do
+    sign_in @user
+    assert_no_difference 'Post.count' do
+      delete post_path(@other_post)
+    end
+    assert_redirected_to root_path
+  end
+
+
+    # test "should get index" do
   #   get posts_index_url
   #   assert_response :success
   # end

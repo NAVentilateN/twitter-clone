@@ -1,10 +1,20 @@
-<div class="post" id="<%= post.id %>">
-  <%= gravatar_for @user %>
-  <span class="content"><%= post.description %></span>
-  <span class="user">By <%= post.user.username %></span>
-  <span class="timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.</span>
-  <%= link_to 'Delete',
-      post_path(post),
-      method: :delete,
-      data: {confirm: "Are you sure?"} %>
+<div class="post" id="post-<%= post.id %>">
+  <span class="content">
+    <% if post.picture? %>
+      <%= image_tag post.picture.url, class: 'picture' %>
+    <% end %>
+    <%= post.description %>
+  </span>
+  <div class="post-info">
+    <%= image_tag current_user.photo.attached? ? current_user.photo : asset_path('question_mark.png'), class: "avatar" %>
+    <span class="user">By <%= link_to post.user.username %></span>
+    <span class="timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.</span>
+
+    <% if post.user == current_user %>
+      <%= link_to 'Delete',
+          post_path(post),
+          method: :delete,
+          data: {confirm: "Are you sure?"} %>
+    <% end %>
+  </div>
 </div>

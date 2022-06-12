@@ -3,7 +3,46 @@
 first_post:
   description: "My first Post"
   user: test_user
+  created_at: <%= 10.minutes.ago %>
 
 second_post:
   description: "My second Post"
   user: test_user
+  created_at: <%= 10.hours.ago %>
+
+third_post:
+  description: "My third Post"
+  user: test_user
+  created_at: <%= 10.months.ago %>
+
+most_recent:
+  description: "My most recent Post"
+  user: test_user
+  created_at: <%= Time.zone.now %>
+
+tau_manifesto:
+  description: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at: <%= 3.years.ago %>
+  user: test_other_user
+
+cat_video:
+  description: "Sad cats are sad: http://youtu.be/PKffm2uI4dk"
+  created_at: <%= 2.hours.ago %>
+  user: test_other_user
+
+most_recent:
+  description: "Writing a short test"
+  created_at: <%= Time.zone.now %>
+  user: test_other_user
+
+orange:
+  description: "I just ate an orange!"
+  created_at: <%= 10.minutes.ago %>
+  user: test_other_user
+
+<% 30.times do |n| %>
+post_<%= n %>:
+  description: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: test_other_user
+<% end %>

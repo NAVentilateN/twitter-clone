@@ -39,6 +39,12 @@ gem 'bootstrap'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'carrierwave'
+gem 'mini_magick'
+
+group :production do
+  gem 'fog'
+end
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

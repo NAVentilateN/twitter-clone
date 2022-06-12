@@ -1,35 +1,29 @@
 class PostsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [ :index ]
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [ :index ]
 
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+
     if @post.save
-      redirect_to posts_path
+      flash[:alert] = "Post created!"
     else
-      render :new
+      flash[:alert] = "Content Required!"
     end
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+
+    @post.destroy if @post.user == current_user
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:description, :picture)
   end
 end
