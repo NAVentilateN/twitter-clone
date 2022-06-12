@@ -6,7 +6,7 @@ ruby '2.7.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg', '~> 1.3', '>= 1.3.5'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -39,6 +39,12 @@ gem 'bootstrap'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'carrierwave'
+gem 'mini_magick'
+
+group :production do
+  gem 'fog'
+end
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

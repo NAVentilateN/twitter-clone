@@ -13,6 +13,7 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   include Warden::Test::Helpers
+  include ActionDispatch::TestProcess
   include Devise::Test::IntegrationHelpers # Rails >= 5
   Warden.test_mode!
 end

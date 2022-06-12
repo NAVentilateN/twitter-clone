@@ -1,18 +1,19 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.username %>
-      </h1>
-
+<div class="container">
+  <div class="row">
+    <%# <section class="user_info col-md-3"> %>
+      <%# <%= image_tag current_user.photo.attached? ? current_user.photo : asset_path('question_mark.png'), class: "avatar" %>
+      <%# <h1> %>
+        <%# <%= @user.username %>
+      <%# </h1> %>
+    </section>
+    <div class="posts col-md-6">
+      <div class="new-post">
+        <%= render "posts/newpost" %>
+      </div>
       <div class="posts">
-        <div class="new-post">
-          <%= render "posts/newpost" %>
-        </div>
-
         <%= render "posts/postlist" %>
       </div>
-    </section>
-  </aside>
+      <%= will_paginate @posts %>
+    </div>
+  </div>
 </div>

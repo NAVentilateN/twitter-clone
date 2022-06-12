@@ -2,7 +2,16 @@ require "test_helper"
 
 class PostTest < ActiveSupport::TestCase
   def setup
-    @post = Post.new(description: "a" * 140, user: users(:test_user))
+    @post = posts(:most_recent)
+  end
+
+  test "post is valid if it have a user and description is within 140 characters" do
+    assert @post.valid?
+  end
+
+  test "post is invalid if it have does not have a user" do
+    @post.user = nil
+    assert_not @post.valid?
   end
 
   test "Should not save if post is more than 140 character" do
@@ -10,14 +19,7 @@ class PostTest < ActiveSupport::TestCase
     assert_not post.save
   end
 
-  test "Should not save if post is less than or equal to 140 character but does not have a user" do
-    post = Post.new(description: "a" * 140)
-    assert_not post.save
-  end
-
-  test "Should save if post is less than or equal to 140 character and have a user" do
-    post = Post.new(description: "a" * 140)
-    post.user = users(:test_user)
-    assert post.save
+  test "order should be that the most recent should be first" do
+    assert_equal posts(:most_recent), Post.first
   end
 end
