@@ -42,10 +42,6 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
 
-group :production do
-  gem 'fog'
-end
-
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
