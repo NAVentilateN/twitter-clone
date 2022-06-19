@@ -1,11 +1,11 @@
 <% provide(:title, current_user.username) %>
 <div class="container">
   <%# <%= gravatar_for (current_user) %>
-  <div class="posts">
-    <div class="new-post">
+  <div class="row justify-content-center">
+    <div class="posts-container col-6">
       <%= render "posts/newpost" %>
+      <%= render "posts/postlist" %>
+      <%= will_paginate @posts %>
     </div>
-    <%= render "posts/postlist" %>
-    <%= will_paginate @posts %>
   </div>
 </div>

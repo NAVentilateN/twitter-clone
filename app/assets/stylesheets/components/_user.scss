@@ -1,2 +1,11 @@
-.user_info {
+.user-info {
+  height: 10%;
+
+  .avatar {
+    height: 100%;
+  }
+
+  h1 {
+    padding-left: 15px;
+  }
 }

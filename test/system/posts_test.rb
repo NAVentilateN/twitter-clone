@@ -15,7 +15,7 @@ class PostsTest < ApplicationSystemTestCase
     login_as user
     visit user_path(user)
     save_and_open_screenshot
-    # assert_selector "h1", text: user.username
+    assert_selector "h1", text: user.username
     assert_selector ".post", count: user.posts.count
   end
 

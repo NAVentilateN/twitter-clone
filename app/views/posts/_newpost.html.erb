@@ -1,10 +1,13 @@
-<%= simple_form_for @post do |f| %>
-  <%= f.input :description, placeholder: "Compose new micropost...", required: true   %>
-  <span class="picture">
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-  </span>
-  <%= f.button :submit %>
-<% end %>
+<div class="new-post-container">
+  <%= simple_form_for @post do |f| %>
+    <%= f.input :description, label: "Create a new Post", placeholder: "Compose new micropost...", required: true   %>
+    <span class="picture">
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    </span>
+    <%= f.button :submit %>
+  <% end %>
+
+</div>
 
 <script type="text/javascript">
   $('#post_picture').bind('change', function() {
