@@ -1,18 +1,14 @@
 <div class="container">
-  <div class="row">
-    <%# <section class="user_info col-md-3"> %>
-      <%# <%= image_tag current_user.photo.attached? ? current_user.photo : asset_path('question_mark.png'), class: "avatar" %>
-      <%# <h1> %>
-        <%# <%= @user.username %>
-      <%# </h1> %>
+  <div class="row justify-content-center">
+    <section class="user-info col-md-3 d-flex">
+      <%= image_tag current_user.photo.attached? ? current_user.photo : asset_path('question_mark.png'), class: "avatar" %>
+      <h1>
+        <%= @user.username %>
+      </h1>
     </section>
-    <div class="posts col-md-6">
-      <div class="new-post">
-        <%= render "posts/newpost" %>
-      </div>
-      <div class="posts">
-        <%= render "posts/postlist" %>
-      </div>
+    <div class="posts-container col-md-6">
+      <%= render "posts/newpost" %>
+      <%= render "posts/postlist" %>
       <%= will_paginate @posts %>
     </div>
   </div>

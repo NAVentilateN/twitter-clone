@@ -1,23 +1,34 @@
-.posts {
-  .new-post {
-    border: solid grey 5px;
-    margin: 5px;
-    padding: 5px;
-    color: grey;
-  }
-
-  .postlist {
-    border: solid black 5px;
-    padding: 5px;
-    color: grey;
-
-    .post {
+.posts-container {
+  .new-post-container {
       border: solid grey 5px;
-      margin: 5px;
+      margin-top: 10px;
+      margin-bottom: 20px;
       padding: 5px;
       color: grey;
     }
 
-  }
+    .postlist {
+      border: solid black 5px;
+      border-radius: 5px;
+      padding: 5px;
+      color: grey;
 
+
+      .post {
+        border: solid grey 5px;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 5px;
+        color: grey;
+
+        .content {
+          justify-content: center;
+          .picture {
+            border: solid grey 5px;
+            margin: 5px;
+            padding: 5px;
+        }
+      }
+    }
+  }
 }

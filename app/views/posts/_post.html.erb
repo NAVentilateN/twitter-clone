@@ -1,9 +1,11 @@
 <div class="post" id="post-<%= post.id %>">
-  <span class="content">
+  <span class="content row">
+    <p>
+      <%= post.description %>
+    </p>
     <% if post.picture? %>
-      <%= image_tag post.picture.url, class: 'picture' %>
+      <%= image_tag post.picture.url, class: 'picture col-9' %>
     <% end %>
-    <%= post.description %>
   </span>
   <div class="post-info">
     <%= image_tag current_user.photo.attached? ? current_user.photo : asset_path('question_mark.png'), class: "avatar" %>
